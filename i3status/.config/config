@@ -1,0 +1,64 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true
+        interval = 5
+}
+
+order += "volume_status"
+order += "disk /"
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "battery all"
+order += "load"
+order += "sysdata mem"
+order += "alerted_time"
+
+volume_status { 
+	format = "{icon}: {percentage}%"
+#	command = "amxier"
+	cache_timeout = 0
+	blocks = "♪"
+}
+
+wireless _first_ {
+        format_up = ": %essid"
+        format_down = ""
+}
+
+ethernet _first_ {
+        # if you use %speed, i3status requires root privileges
+        format_up = " %speed²"
+		format_down = ""
+}
+
+battery all {
+        format = "%status: %percentage %remaining"
+	status_chr = ""
+	status_bat = ""
+	status_full = ""
+}
+
+alerted_time {
+	alert_hour_min = 1
+        format = "{hour}:{minute}"
+}
+
+load {
+        format = ":%1min"
+}
+
+sysdata mem {
+	cache_timeout = 5
+	format = "[\?color=mem : {mem_used_percent}%]"
+}
+
+disk "/" {
+        format = ":%avail"
+}
